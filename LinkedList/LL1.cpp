@@ -42,6 +42,21 @@ void printLL(Node* node){
     cout << endl;
 }
 
+bool checkCycle(Node* head){
+    if (head == NULL)
+        return false;
+    Node* slow = head;
+    Node* fast = head -> next;
+    while (fast != NULL && fast -> next != NULL){
+        if (fast == slow){
+            return true;
+        }
+        fast = fast -> next -> next;
+        slow = slow -> next;
+    }
+    return false;
+}
+
 int main(){
     // input keys
     int keys[] = { 1, 2, 3, 4, 5 };
@@ -53,14 +68,17 @@ int main(){
         head = push(head, keys[i]);
     }
     
-    // while (node != NULL){
-    //     cout << node ->data << ' ';
-    //     node = node->next;
-    // }
+    
     printLL(head);
  
     // insert cycle
     //head->next->next->next->next->next = head->next->next;
+    if (checkCycle(head)){
+        cout << "Have cycle";
+    }
+    else{
+        cout << "No cycle";
+    }
 
 
     cout << endl;
