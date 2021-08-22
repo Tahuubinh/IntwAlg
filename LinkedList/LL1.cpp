@@ -70,6 +70,7 @@ int main(){
     
     
     printLL(head);
+    printLL(head);
  
     // insert cycle
     //head->next->next->next->next->next = head->next->next;
